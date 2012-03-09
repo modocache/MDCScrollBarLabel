@@ -2,7 +2,8 @@
 
 An animated scroll bar to present extra information
 to the used when scrolling on a UIScrollView.
-Y'know, ike the clock on Path.
+
+Y'know, like the clock on Path.
 
 ## Disclaimer
 
