@@ -1,4 +1,4 @@
-# MDCScrollbarLabel
+# MDCScrollBarLabel
 
 An animated scroll bar to present extra information
 to the used when scrolling on a UIScrollView.
