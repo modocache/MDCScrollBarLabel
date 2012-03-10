@@ -31,6 +31,7 @@ the whole thing to better suit your needs.
   It would be nice to have a cool background image.
   An alternative would be to construct an init method or something
   which allows users to customize their own.
+- Animation is wonky when switching between portrait and landscape.
 
 ## License
 
