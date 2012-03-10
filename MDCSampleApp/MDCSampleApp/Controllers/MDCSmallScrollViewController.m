@@ -35,14 +35,21 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"UIScrollView";
+        self.view.backgroundColor = [UIColor colorWithRed:0x00/255.0
+                                                    green:0x8a/255.0
+                                                     blue:0xb8/255.0
+                                                    alpha:1.0];
         
         // Add a very tall UIScrollView
-        CGRect scrollFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        CGRect scrollFrame = CGRectMake(50, 50,
+                                        self.view.frame.size.width/2 + 50,
+                                        self.view.frame.size.height/2);
         self.scrollView = [[UIScrollView alloc] initWithFrame:scrollFrame];
-        self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
-                                                 self.view.frame.size.height*10);
+        self.scrollView.backgroundColor = [UIColor whiteColor];
+        self.scrollView.contentSize = CGSizeMake(scrollFrame.size.width,
+                                                 self.view.frame.size.height*2);
         self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth |
-        UIViewAutoresizingFlexibleHeight;
+                                           UIViewAutoresizingFlexibleHeight;
         self.scrollView.delegate = self;
         
         self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:self.scrollView];

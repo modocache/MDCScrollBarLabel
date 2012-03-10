@@ -49,7 +49,7 @@
         UIScrollView *scrollView = [self.webView valueForKey:@"_scrollView"];
         scrollView.delegate = self;
         self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:scrollView];
-        [self.webView addSubview:self.scrollBarLabel];
+        [scrollView addSubview:self.scrollBarLabel];
         
         [self.view addSubview:self.webView];
     }

@@ -27,31 +27,27 @@
 
 @implementation MDCTableViewController
 
+@synthesize tableView = tableView_;
 @synthesize scrollBarLabel = scrollBarLabel_;
 
 #pragma mark - Object Lifecycle
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"Blah Blah";
+        self.title = @"UITableView";
         
-        UITableView *tableView = [self.tableView retain];
-        [self.tableView removeFromSuperview];
+        CGSize size = self.view.frame.size;
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)
+                                                      style:UITableViewStylePlain];
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
         
-        UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
-                                                                         self.view.frame.size.width,
-                                                                         self.view.frame.size.height)];
+        self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:self.tableView];
         
-        self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:tableView];
-        [containerView insertSubview:self.scrollBarLabel atIndex:0];
-        
-        [containerView insertSubview:tableView atIndex:1];
-        [tableView release];
-        
-        self.view = containerView;
-        [containerView release];
+        [self.view addSubview:self.tableView];
+        [self.tableView insertSubview:self.scrollBarLabel atIndex:0];
     }
     return self;
 }
@@ -109,7 +105,6 @@
 #pragma mark - UIScrollViewDelegate Protocol Methods
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"%@:%@", [self class], NSStringFromSelector(_cmd));
     [self.scrollBarLabel adjustPositionForScrollView:scrollView];
     [self.scrollBarLabel fadeIn];
     

@@ -61,7 +61,6 @@ static float const kLabelHeight = 30.0f;
 #pragma mark - Public Interface
 
 - (void)adjustPositionForScrollView:(UIScrollView *)scrollView {
-    NSLog(@"%@:%@", [self class], NSStringFromSelector(_cmd));
     CGSize size = self.frame.size;
     CGPoint origin = self.frame.origin;
     UIView *indicator = [[scrollView subviews] lastObject];
@@ -73,12 +72,14 @@ static float const kLabelHeight = 30.0f;
         + (indicator.frame.size.height - size.height)/2;
     
     float topLimit = kVerticalPadding + scrollView.contentOffset.y - size.height/2;
+    float bottomLimit = scrollView.contentOffset.y - kVerticalPadding - size.height/2;
     
     
     if (y < topLimit) {
         y = topLimit;
-    } else if (indicator.frame.origin.y + indicator.frame.size.height > scrollView.contentSize.height - kVerticalPadding) {
-        y = scrollView.frame.size.height + scrollView.contentOffset.y - size.height/2 - kVerticalPadding;
+    } else if (scrollView.contentOffset.y > scrollView.contentSize.height &&
+               y > bottomLimit) {
+        y = bottomLimit;
     }
     
     self.layer.frame = CGRectMake(origin.x, y, size.width, size.height);
@@ -91,8 +92,7 @@ static float const kLabelHeight = 30.0f;
     
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
     float startPoint = self.layer.position.x;
-    float endPoint = self.scrollView.frame.origin.x + self.scrollView.frame.size.width - \
-    self.layer.frame.size.width/2 - kHorizontalPadding;
+    float endPoint = self.scrollView.frame.size.width - self.layer.frame.size.width/2 - kHorizontalPadding;
     positionAnimation.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:startPoint],
                                 [NSNumber numberWithFloat:endPoint],
                                 nil];
@@ -119,8 +119,7 @@ static float const kLabelHeight = 30.0f;
     
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
     float startPoint = self.layer.position.x;
-    float endPoint = self.scrollView.frame.origin.x + self.scrollView.frame.size.width - \
-    self.layer.frame.size.width/2;
+    float endPoint = self.scrollView.frame.size.width - self.layer.frame.size.width/2;
     positionAnimation.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:startPoint],
                                 [NSNumber numberWithFloat:endPoint],
                                 nil];
