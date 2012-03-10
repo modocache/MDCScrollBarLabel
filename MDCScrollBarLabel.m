@@ -72,14 +72,9 @@ static float const kLabelHeight         = 30.0f;
         + (indicator.frame.size.height - size.height)/2;
     
     float topLimit = kVerticalPadding + scrollView.contentOffset.y;
-    float bottomLimit = scrollView.contentSize.height - kVerticalPadding - size.height;
     
     if (y < topLimit) {
         y = topLimit;
-    } else if (y > bottomLimit) {
-        y = bottomLimit \
-            + scrollView.frame.size.height \
-            + scrollView.contentOffset.y - scrollView.contentSize.height;
     }
     
     self.layer.frame = CGRectMake(origin.x, y, size.width, size.height);
