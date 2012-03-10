@@ -29,10 +29,10 @@
 
 @synthesize scrollView = scrollView_;
 
-static float const kHorizontalPadding = 15.0f;
-static float const kVerticalPadding = 30.0f;
-static float const kLabelWidth = 100.0f;
-static float const kLabelHeight = 30.0f;
+static float const kHorizontalPadding   = 15.0f;
+static float const kVerticalPadding     = 30.0f;
+static float const kLabelWidth          = 100.0f;
+static float const kLabelHeight         = 30.0f;
 
 #pragma mark - Object Lifecycle
 
@@ -71,24 +71,21 @@ static float const kLabelHeight = 30.0f;
         + scrollView.frame.size.height/scrollView.contentSize.height \
         + (indicator.frame.size.height - size.height)/2;
     
-    float topLimit = kVerticalPadding + scrollView.contentOffset.y - size.height/2;
-    float bottomLimit = scrollView.contentOffset.y - kVerticalPadding - size.height/2;
-    
+    float topLimit = kVerticalPadding + scrollView.contentOffset.y;
+    float bottomLimit = scrollView.contentSize.height - kVerticalPadding - size.height;
     
     if (y < topLimit) {
         y = topLimit;
-    } else if (scrollView.contentOffset.y > scrollView.contentSize.height &&
-               y > bottomLimit) {
-        y = bottomLimit;
+    } else if (y > bottomLimit) {
+        y = bottomLimit \
+            + scrollView.frame.size.height \
+            + scrollView.contentOffset.y - scrollView.contentSize.height;
     }
     
     self.layer.frame = CGRectMake(origin.x, y, size.width, size.height);
 }
 
 - (void)fadeIn {
-    if (self.layer.animationKeys.count > 0 || self.alpha == 1) {
-        return;
-    }
     
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
     float startPoint = self.layer.position.x;
@@ -113,9 +110,6 @@ static float const kLabelHeight = 30.0f;
 }
 
 - (void)fadeOut {
-    if (self.layer.animationKeys.count > 0 || self.alpha == 0) {
-        return;
-    }
     
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
     float startPoint = self.layer.position.x;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA3B9930150B885D00F8A02E /* MDCScrollBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3B992F150B885D00F8A02E /* MDCScrollBarViewController.m */; };
+		DA3B9931150B885D00F8A02E /* MDCScrollBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3B992F150B885D00F8A02E /* MDCScrollBarViewController.m */; };
 		DA7B95F4150A8B7D00800EF2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7B95F3150A8B7D00800EF2 /* UIKit.framework */; };
 		DA7B95F6150A8B7D00800EF2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7B95F5150A8B7D00800EF2 /* Foundation.framework */; };
 		DA7B95F8150A8B7D00800EF2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7B95F7150A8B7D00800EF2 /* CoreGraphics.framework */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA3B992E150B885D00F8A02E /* MDCScrollBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCScrollBarViewController.h; path = ../../MDCScrollBarViewController.h; sourceTree = "<group>"; };
+		DA3B992F150B885D00F8A02E /* MDCScrollBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCScrollBarViewController.m; path = ../../MDCScrollBarViewController.m; sourceTree = "<group>"; };
 		DA7B95EF150A8B7D00800EF2 /* MDCSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDCSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7B95F3150A8B7D00800EF2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DA7B95F5150A8B7D00800EF2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -140,6 +144,8 @@
 				DA7B95FA150A8B7D00800EF2 /* Supporting Files */,
 				DA7B965A150B5A0300800EF2 /* MDCScrollBarLabel.h */,
 				DA7B965B150B5A0300800EF2 /* MDCScrollBarLabel.m */,
+				DA3B992E150B885D00F8A02E /* MDCScrollBarViewController.h */,
+				DA3B992F150B885D00F8A02E /* MDCScrollBarViewController.m */,
 			);
 			path = MDCSampleApp;
 			sourceTree = "<group>";
@@ -314,6 +320,7 @@
 				DA7B967E150B618100800EF2 /* MDCWebViewController.m in Sources */,
 				DA7B9680150B618100800EF2 /* MDCAppDelegate.m in Sources */,
 				DA7B968A150B692300800EF2 /* MDCTableViewController.m in Sources */,
+				DA3B9930150B885D00F8A02E /* MDCScrollBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +336,7 @@
 				DA7B967F150B618100800EF2 /* MDCWebViewController.m in Sources */,
 				DA7B9681150B618100800EF2 /* MDCAppDelegate.m in Sources */,
 				DA7B968B150B692300800EF2 /* MDCTableViewController.m in Sources */,
+				DA3B9931150B885D00F8A02E /* MDCScrollBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

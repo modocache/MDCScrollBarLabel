@@ -27,7 +27,7 @@
 @implementation MDCWebViewController
 
 @synthesize webView = webView_;
-@synthesize scrollBarLabel = scrollBarLabel_;
+
 
 #pragma mark - Object Lifecycle
 
@@ -56,6 +56,7 @@
     return self;
 }
 
+
 #pragma mark - UIViewController Overrides
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -73,32 +74,21 @@
 {
     [super viewDidUnload];
     [self.webView release], self.webView = nil;
-    [self.scrollBarLabel release], self.scrollBarLabel = nil;
 }
 
-#pragma mark - UIScrollViewDelegate Protocol Methods
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.scrollBarLabel adjustPositionForScrollView:scrollView];
-    [self.scrollBarLabel fadeIn];
+#pragma mark - MDCScrollBarViewController Overrides
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [super scrollViewDidScroll:scrollView];
     
     // Set label
-    float progress = 10.0;
+    UIScrollView *webScrollView = [self.webView valueForKey:@"_scrollView"];
+    
+    float progress = webScrollView.contentOffset.y / webScrollView.contentSize.height;
     self.scrollBarLabel.text = [NSString stringWithFormat:@"%f%", progress];
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self.scrollBarLabel performSelector:@selector(fadeOut)
-                              withObject:nil
-                              afterDelay:0.5];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (!decelerate) {
-        [self.scrollBarLabel performSelector:@selector(fadeOut)
-                                  withObject:nil
-                                  afterDelay:0.5];
-    }
-}
 
 @end

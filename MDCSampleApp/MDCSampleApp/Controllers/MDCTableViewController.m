@@ -28,7 +28,7 @@
 @implementation MDCTableViewController
 
 @synthesize tableView = tableView_;
-@synthesize scrollBarLabel = scrollBarLabel_;
+
 
 #pragma mark - Object Lifecycle
 
@@ -63,7 +63,19 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [self.scrollBarLabel release], self.scrollBarLabel = nil;
+    [self.tableView release], self.tableView = nil;
+}
+
+
+#pragma mark - MDCScrollBarViewController Overrides
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [super scrollViewDidScroll:scrollView];
+    
+    // Set label
+    float progress = self.tableView.contentOffset.y / self.tableView.contentSize.height;
+    self.scrollBarLabel.text = [NSString stringWithFormat:@"%f%", progress];
 }
 
 
@@ -101,30 +113,5 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-
-#pragma mark - UIScrollViewDelegate Protocol Methods
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.scrollBarLabel adjustPositionForScrollView:scrollView];
-    [self.scrollBarLabel fadeIn];
-    
-    // Set label
-    float progress = self.tableView.contentOffset.y / self.tableView.contentSize.height;
-    self.scrollBarLabel.text = [NSString stringWithFormat:@"%f%", progress];
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self.scrollBarLabel performSelector:@selector(fadeOut)
-                              withObject:nil
-                              afterDelay:0.5];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (!decelerate) {
-        [self.scrollBarLabel performSelector:@selector(fadeOut)
-                                  withObject:nil
-                                  afterDelay:0.5];
-    }
-}
 
 @end

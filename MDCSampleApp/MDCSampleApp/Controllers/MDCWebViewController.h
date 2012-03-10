@@ -23,15 +23,13 @@
 
 
 #import <UIKit/UIKit.h>
-#import "MDCScrollBarLabel.h"
+#import "MDCScrollBarViewController.h"
 
-@interface MDCWebViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate>
+@interface MDCWebViewController : MDCScrollBarViewController <UIWebViewDelegate>
 {
     UIWebView *webView_;
-    MDCScrollBarLabel *scrollBarLabel_;
 }
 
 @property (nonatomic, retain) UIWebView *webView;
-@property (nonatomic, retain) MDCScrollBarLabel *scrollBarLabel;
 
 @end

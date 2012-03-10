@@ -27,7 +27,7 @@
 @implementation MDCSmallScrollViewController
 
 @synthesize scrollView = scrollView_;
-@synthesize scrollBarLabel = scrollBarLabel_;
+
 
 #pragma mark - Object Lifecycle
 
@@ -60,9 +60,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 #pragma mark - UIViewController Overrides
 
@@ -74,32 +71,19 @@
 {
     [super viewDidUnload];
     [self.scrollView release], self.scrollView = nil;
-    [self.scrollBarLabel release], self.scrollBarLabel = nil;
 }
 
-#pragma mark - UIScrollViewDelegate Protocol Methods
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.scrollBarLabel adjustPositionForScrollView:scrollView];
-    [self.scrollBarLabel fadeIn];
+#pragma mark - MDCScrollBarViewController Overrides
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [super scrollViewDidScroll:scrollView];
     
     // Set label
     float progress = self.scrollView.contentOffset.y / self.scrollView.contentSize.height;
     self.scrollBarLabel.text = [NSString stringWithFormat:@"%f%", progress];
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self.scrollBarLabel performSelector:@selector(fadeOut)
-                              withObject:nil
-                              afterDelay:0.5];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if (!decelerate) {
-        [self.scrollBarLabel performSelector:@selector(fadeOut)
-                                  withObject:nil
-                                  afterDelay:0.5];
-    }
-}
 
 @end

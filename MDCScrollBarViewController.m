@@ -22,62 +22,28 @@
 //
 
 
-#import "MDCScrollViewController.h"
+#import "MDCScrollBarViewController.h"
 
-@implementation MDCScrollViewController
 
-@synthesize scrollView = scrollView_;
+@implementation MDCScrollBarViewController
+
 @synthesize scrollBarLabel = scrollBarLabel_;
 
-
-#pragma mark - Object Lifecycle
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.title = @"UIScrollView";
-        
-        // Add a very tall UIScrollView
-        CGRect scrollFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        self.scrollView = [[UIScrollView alloc] initWithFrame:scrollFrame];
-        self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
-                                                 self.view.frame.size.height*5);
-        self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth |
-        UIViewAutoresizingFlexibleHeight;
-        self.scrollView.delegate = self;
-        
-        self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:self.scrollView];
-        [self.scrollView addSubview:self.scrollBarLabel];
-        
-        [self.view addSubview:self.scrollView];
-    }
-    return self;
-}
 
 
 #pragma mark - UIViewController Overrides
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-    return YES;
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [self.scrollView release], self.scrollView = nil;
     [self.scrollBarLabel release], self.scrollBarLabel = nil;
 }
-
 
 #pragma mark - UIScrollViewDelegate Protocol Methods
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self.scrollBarLabel adjustPositionForScrollView:scrollView];
     [self.scrollBarLabel fadeIn];
-    
-    // Set label
-    float progress = self.scrollView.contentOffset.y / self.scrollView.contentSize.height;
-    self.scrollBarLabel.text = [NSString stringWithFormat:@"%f%", progress];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -107,6 +73,5 @@
                               withObject:nil
                               afterDelay:0.5];
 }
-
 
 @end

@@ -23,14 +23,13 @@
 
 
 #import <UIKit/UIKit.h>
-#import "MDCScrollBarViewController.h"
+#import "MDCScrollBarLabel.h"
 
-@interface MDCTableViewController : MDCScrollBarViewController
-<UITableViewDataSource, UITableViewDelegate>
+@interface MDCScrollBarViewController : UIViewController <UIScrollViewDelegate>
 {
-    UITableView *tableView_;
+    MDCScrollBarLabel *scrollBarLabel_;
 }
 
-@property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, retain) MDCScrollBarLabel *scrollBarLabel;
 
 @end
