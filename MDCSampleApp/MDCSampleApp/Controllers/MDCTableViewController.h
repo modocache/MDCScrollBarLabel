@@ -22,27 +22,14 @@
 //
 
 
-#import "MDCSampleAppTests.h"
+#import <UIKit/UIKit.h>
+#import "MDCScrollBarLabel.h"
 
-@implementation MDCSampleAppTests
-
-- (void)setUp
+@interface MDCTableViewController : UITableViewController
 {
-    [super setUp];
-    
-    // Set-up code here.
+    MDCScrollBarLabel *scrollBarLabel_;
 }
 
-- (void)tearDown
-{
-    // Tear-down code here.
-    
-    [super tearDown];
-}
-
-- (void)testExample
-{
-    STFail(@"Unit tests are not implemented yet in MDCSampleAppTests");
-}
+@property (nonatomic, retain) MDCScrollBarLabel *scrollBarLabel;
 
 @end

@@ -22,27 +22,10 @@
 //
 
 
-#import "MDCSampleAppTests.h"
+#import <UIKit/UIKit.h>
 
-@implementation MDCSampleAppTests
+@interface MDCAppDelegate : UIResponder <UIApplicationDelegate>
 
-- (void)setUp
-{
-    [super setUp];
-    
-    // Set-up code here.
-}
-
-- (void)tearDown
-{
-    // Tear-down code here.
-    
-    [super tearDown];
-}
-
-- (void)testExample
-{
-    STFail(@"Unit tests are not implemented yet in MDCSampleAppTests");
-}
+@property (strong, nonatomic) UIWindow *window;
 
 @end

@@ -22,27 +22,15 @@
 //
 
 
-#import "MDCSampleAppTests.h"
+#import <Foundation/Foundation.h>
 
-@implementation MDCSampleAppTests
+@interface MDCScrollBarLabel : UILabel
 
-- (void)setUp
-{
-    [super setUp];
-    
-    // Set-up code here.
-}
+@property (nonatomic, assign) UIScrollView *scrollView;
 
-- (void)tearDown
-{
-    // Tear-down code here.
-    
-    [super tearDown];
-}
-
-- (void)testExample
-{
-    STFail(@"Unit tests are not implemented yet in MDCSampleAppTests");
-}
+- (id)initWithScrollView:(UIScrollView *)scrollView;
+- (void)adjustPositionForScrollView:(UIScrollView *)scrollView;
+- (void)fadeIn;
+- (void)fadeOut;
 
 @end

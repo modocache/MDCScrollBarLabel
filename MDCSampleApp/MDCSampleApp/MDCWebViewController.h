@@ -1,5 +1,5 @@
 //
-//  MDCRootViewController.h
+//  MDCWebViewController.h
 //  MDCSampleApp
 //
 //  Created by Brian Gesiak on 3/10/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MDCRootViewController : UITableViewController
+@interface MDCWebViewController : UIViewController
 
 @end

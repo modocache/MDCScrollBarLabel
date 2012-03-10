@@ -22,27 +22,15 @@
 //
 
 
-#import "MDCSampleAppTests.h"
+#import <UIKit/UIKit.h>
 
-@implementation MDCSampleAppTests
+typedef enum {
+    MDCRootViewControllerCellTagUIScrollView = 0,
+    MDCRootViewControllerCellTagEmbeddedUIScrollView,
+    MDCRootViewControllerCellTagUIWebView,
+    MDCRootViewControllerCellTagUITableView,
+} MDCRootViewControllerCellTag;
 
-- (void)setUp
-{
-    [super setUp];
-    
-    // Set-up code here.
-}
-
-- (void)tearDown
-{
-    // Tear-down code here.
-    
-    [super tearDown];
-}
-
-- (void)testExample
-{
-    STFail(@"Unit tests are not implemented yet in MDCSampleAppTests");
-}
+@interface MDCRootViewController : UITableViewController
 
 @end

@@ -22,27 +22,16 @@
 //
 
 
-#import "MDCSampleAppTests.h"
+#import <UIKit/UIKit.h>
+#import "MDCScrollBarLabel.h"
 
-@implementation MDCSampleAppTests
-
-- (void)setUp
+@interface MDCWebViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate>
 {
-    [super setUp];
-    
-    // Set-up code here.
+    UIWebView *webView_;
+    MDCScrollBarLabel *scrollBarLabel_;
 }
 
-- (void)tearDown
-{
-    // Tear-down code here.
-    
-    [super tearDown];
-}
-
-- (void)testExample
-{
-    STFail(@"Unit tests are not implemented yet in MDCSampleAppTests");
-}
+@property (nonatomic, retain) UIWebView *webView;
+@property (nonatomic, retain) MDCScrollBarLabel *scrollBarLabel;
 
 @end
