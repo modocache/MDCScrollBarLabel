@@ -39,14 +39,14 @@
         
         // Add a very tall UIScrollView
         CGRect scrollFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        self.scrollView = [[UIScrollView alloc] initWithFrame:scrollFrame];
+        self.scrollView = [[[UIScrollView alloc] initWithFrame:scrollFrame] autorelease];
         self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width,
                                                  self.view.frame.size.height*5);
         self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth |
         UIViewAutoresizingFlexibleHeight;
         self.scrollView.delegate = self;
         
-        self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:self.scrollView];
+        self.scrollBarLabel = [[[MDCScrollBarLabel alloc] initWithScrollView:self.scrollView] autorelease];
         [self.scrollView addSubview:self.scrollBarLabel];
         
         [self.view addSubview:self.scrollView];
@@ -63,9 +63,13 @@
 
 - (void)viewDidUnload
 {
+    [scrollView_ release];
+    [scrollBarLabel_ release];
+    
+    scrollView_ = nil;
+    scrollBarLabel_ = nil;
+    
     [super viewDidUnload];
-    [self.scrollView release], self.scrollView = nil;
-    [self.scrollBarLabel release], self.scrollBarLabel = nil;
 }
 
 

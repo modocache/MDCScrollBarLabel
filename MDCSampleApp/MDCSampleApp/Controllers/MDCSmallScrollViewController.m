@@ -44,7 +44,7 @@
         CGRect scrollFrame = CGRectMake(50, 50,
                                         self.view.frame.size.width/2 + 50,
                                         self.view.frame.size.height/2);
-        self.scrollView = [[UIScrollView alloc] initWithFrame:scrollFrame];
+        self.scrollView = [[[UIScrollView alloc] initWithFrame:scrollFrame] autorelease];
         self.scrollView.backgroundColor = [UIColor whiteColor];
         self.scrollView.contentSize = CGSizeMake(scrollFrame.size.width,
                                                  self.view.frame.size.height*2);
@@ -52,7 +52,7 @@
                                            UIViewAutoresizingFlexibleHeight;
         self.scrollView.delegate = self;
         
-        self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:self.scrollView];
+        self.scrollBarLabel = [[[MDCScrollBarLabel alloc] initWithScrollView:self.scrollView] autorelease];
         [self.scrollView addSubview:self.scrollBarLabel];
         
         [self.view addSubview:self.scrollView];
@@ -69,8 +69,11 @@
 
 - (void)viewDidUnload
 {
+    scrollView_.delegate = nil;
+    [scrollView_ release];
+    scrollView_ = nil;
+    
     [super viewDidUnload];
-    [self.scrollView release], self.scrollView = nil;
 }
 
 

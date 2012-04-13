@@ -39,16 +39,16 @@
         self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth |
                                      UIViewAutoresizingFlexibleHeight;
         
-        self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0,
+        self.webView = [[[UIWebView alloc] initWithFrame:CGRectMake(0, 0,
                                                                    self.view.frame.size.width,
-                                                                   self.view.frame.size.height)];
+                                                                   self.view.frame.size.height)] autorelease];
         self.webView.autoresizingMask = self.view.autoresizingMask;
         self.webView.delegate = self;
         
         // On iOS5+ this can be accessed via self.webView.scrollView
         UIScrollView *scrollView = [self.webView valueForKey:@"_scrollView"];
         scrollView.delegate = self;
-        self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:scrollView];
+        self.scrollBarLabel = [[[MDCScrollBarLabel alloc] initWithScrollView:scrollView] autorelease];
         [scrollView addSubview:self.scrollBarLabel];
         
         [self.view addSubview:self.webView];
@@ -56,6 +56,14 @@
     return self;
 }
 
+- (void)dealloc
+{
+    webView_.delegate = nil;
+    [webView_ release];
+    webView_ = nil;
+    
+    [super dealloc];
+}
 
 #pragma mark - UIViewController Overrides
 
@@ -72,8 +80,11 @@
 
 - (void)viewDidUnload
 {
+    webView_.delegate = nil;
+    [webView_ release];
+    webView_ = nil;
+    
     [super viewDidUnload];
-    [self.webView release], self.webView = nil;
 }
 
 

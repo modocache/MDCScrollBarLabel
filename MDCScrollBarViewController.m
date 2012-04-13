@@ -35,8 +35,11 @@
 
 - (void)viewDidUnload
 {
+    scrollBarLabel_.scrollView = nil;
+    [scrollBarLabel_ release];
+    scrollBarLabel_ = nil;
+    
     [super viewDidUnload];
-    [self.scrollBarLabel release], self.scrollBarLabel = nil;
 }
 
 #pragma mark - UIScrollViewDelegate Protocol Methods
@@ -61,14 +64,12 @@
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    NSLog(@"%@:%@", [self class], NSStringFromSelector(_cmd));
     [self.scrollBarLabel performSelector:@selector(fadeOut)
                               withObject:nil
                               afterDelay:0.5];
 }
 
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
-    NSLog(@"%@:%@", [self class], NSStringFromSelector(_cmd));
     [self.scrollBarLabel performSelector:@selector(fadeOut)
                               withObject:nil
                               afterDelay:0.5];

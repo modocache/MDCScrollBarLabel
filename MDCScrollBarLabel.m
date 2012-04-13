@@ -58,6 +58,12 @@ static float const kLabelHeight         = 30.0f;
     return self;
 }
 
+- (void)dealloc
+{
+    scrollView_ = nil;
+    [super dealloc];
+}
+
 #pragma mark - Public Interface
 
 - (void)adjustPositionForScrollView:(UIScrollView *)scrollView {

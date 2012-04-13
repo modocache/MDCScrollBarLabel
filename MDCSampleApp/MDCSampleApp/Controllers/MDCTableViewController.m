@@ -39,12 +39,12 @@
         self.title = @"UITableView";
         
         CGSize size = self.view.frame.size;
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)
-                                                      style:UITableViewStylePlain];
+        self.tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)
+                                                      style:UITableViewStylePlain] autorelease];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         
-        self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:self.tableView];
+        self.scrollBarLabel = [[[MDCScrollBarLabel alloc] initWithScrollView:self.tableView] autorelease];
         
         [self.view addSubview:self.tableView];
         [self.tableView insertSubview:self.scrollBarLabel atIndex:0];
@@ -62,8 +62,12 @@
 
 - (void)viewDidUnload
 {
+    tableView_.delegate = nil;
+    tableView_.dataSource = nil;
+    [tableView_ release];
+    tableView_ = nil;
+    
     [super viewDidUnload];
-    [self.tableView release], self.tableView = nil;
 }
 
 
