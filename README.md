@@ -1,4 +1,4 @@
-# MDCScrollBarLabel
+# MDCScrollBarLabel [![endorse](http://api.coderwall.com/modocache/endorsecount.png)](http://coderwall.com/modocache)
 
 An animated scroll bar to present extra information
 to the used when scrolling on a UIScrollView.
