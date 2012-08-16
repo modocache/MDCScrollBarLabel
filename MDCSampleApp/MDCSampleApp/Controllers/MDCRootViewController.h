@@ -24,12 +24,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum {
-    MDCRootViewControllerCellTagUIScrollView = 0,
-    MDCRootViewControllerCellTagEmbeddedUIScrollView,
-    MDCRootViewControllerCellTagUIWebView,
-    MDCRootViewControllerCellTagUITableView,
-} MDCRootViewControllerCellTag;
 
 @interface MDCRootViewController : UITableViewController
 

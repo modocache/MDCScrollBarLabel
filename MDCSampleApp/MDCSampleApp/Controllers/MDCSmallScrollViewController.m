@@ -24,56 +24,57 @@
 
 #import "MDCSmallScrollViewController.h"
 
+
+@interface MDCSmallScrollViewController ()
+@property (nonatomic, strong) UIScrollView *scrollView;
+@end
+
+
 @implementation MDCSmallScrollViewController
-
-@synthesize scrollView = scrollView_;
-
-
-#pragma mark - Object Lifecycle
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.title = @"UIScrollView";
-        self.view.backgroundColor = [UIColor colorWithRed:0x00/255.0
-                                                    green:0x8a/255.0
-                                                     blue:0xb8/255.0
-                                                    alpha:1.0];
-        
-        // Add a very tall UIScrollView
-        CGRect scrollFrame = CGRectMake(50, 50,
-                                        self.view.frame.size.width/2 + 50,
-                                        self.view.frame.size.height/2);
-        self.scrollView = [[[UIScrollView alloc] initWithFrame:scrollFrame] autorelease];
-        self.scrollView.backgroundColor = [UIColor whiteColor];
-        self.scrollView.contentSize = CGSizeMake(scrollFrame.size.width,
-                                                 self.view.frame.size.height*2);
-        self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth |
-                                           UIViewAutoresizingFlexibleHeight;
-        self.scrollView.delegate = self;
-        
-        self.scrollBarLabel = [[[MDCScrollBarLabel alloc] initWithScrollView:self.scrollView] autorelease];
-        [self.scrollView addSubview:self.scrollBarLabel];
-        
-        [self.view addSubview:self.scrollView];
-    }
-    return self;
-}
 
 
 #pragma mark - UIViewController Overrides
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-    return YES;
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    self.title = @"UIScrollView";
+    self.view.backgroundColor = [UIColor colorWithRed:0x00/255.0
+                                                green:0x8a/255.0
+                                                 blue:0xb8/255.0
+                                                alpha:1.0];
+
+    // Add a very tall UIScrollView
+    CGRect scrollFrame = CGRectMake(50, 50,
+                                    self.view.frame.size.width/2 + 50,
+                                    self.view.frame.size.height/2);
+    self.scrollView = [[UIScrollView alloc] initWithFrame:scrollFrame];
+    self.scrollView.backgroundColor = [UIColor whiteColor];
+    self.scrollView.contentSize = CGSizeMake(scrollFrame.size.width,
+                                             self.view.frame.size.height*2);
+    self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth |
+    UIViewAutoresizingFlexibleHeight;
+    self.scrollView.delegate = self;
+
+    self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:self.scrollView];
+    [self.scrollView addSubview:self.scrollBarLabel];
+
+    [self.view addSubview:self.scrollView];
 }
 
 - (void)viewDidUnload
 {
-    scrollView_.delegate = nil;
-    [scrollView_ release];
-    scrollView_ = nil;
-    
+    self.scrollView.delegate = nil;
+    self.scrollView = nil;
+    self.scrollBarLabel = nil;
+
     [super viewDidUnload];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
 }
 
 
@@ -82,11 +83,10 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [super scrollViewDidScroll:scrollView];
-    
+
     // Set label
     float progress = self.scrollView.contentOffset.y / self.scrollView.contentSize.height;
-    self.scrollBarLabel.text = [NSString stringWithFormat:@"%f%", progress];
+    self.scrollBarLabel.text = [NSString stringWithFormat:@"%f", progress];
 }
-
 
 @end

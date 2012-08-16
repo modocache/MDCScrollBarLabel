@@ -25,11 +25,7 @@
 #import <UIKit/UIKit.h>
 #import "MDCScrollBarViewController.h"
 
-@interface MDCSmallScrollViewController : MDCScrollBarViewController
-{
-    UIScrollView *scrollView_;
-}
 
-@property (nonatomic, retain) UIScrollView *scrollView;
+@interface MDCSmallScrollViewController : MDCScrollBarViewController
 
 @end

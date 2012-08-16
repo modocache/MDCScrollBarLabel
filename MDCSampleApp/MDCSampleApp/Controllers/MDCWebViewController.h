@@ -25,11 +25,7 @@
 #import <UIKit/UIKit.h>
 #import "MDCScrollBarViewController.h"
 
-@interface MDCWebViewController : MDCScrollBarViewController <UIWebViewDelegate>
-{
-    UIWebView *webView_;
-}
 
-@property (nonatomic, retain) UIWebView *webView;
+@interface MDCWebViewController : MDCScrollBarViewController
 
 @end

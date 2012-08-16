@@ -27,20 +27,17 @@
 
 @implementation MDCScrollBarViewController
 
-@synthesize scrollBarLabel = scrollBarLabel_;
-
-
 
 #pragma mark - UIViewController Overrides
 
 - (void)viewDidUnload
 {
-    scrollBarLabel_.scrollView = nil;
-    [scrollBarLabel_ release];
-    scrollBarLabel_ = nil;
+    self.scrollBarLabel.scrollView = nil;
+    self.scrollBarLabel = nil;
     
     [super viewDidUnload];
 }
+
 
 #pragma mark - UIScrollViewDelegate Protocol Methods
 

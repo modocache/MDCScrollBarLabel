@@ -25,49 +25,47 @@
 #import "MDCTableViewController.h"
 
 
+@interface MDCTableViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, strong) UITableView *tableView;
+@end
+
+
 @implementation MDCTableViewController
-
-@synthesize tableView = tableView_;
-
-
-#pragma mark - Object Lifecycle
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.title = @"UITableView";
-        
-        CGSize size = self.view.frame.size;
-        self.tableView = [[[UITableView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)
-                                                      style:UITableViewStylePlain] autorelease];
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
-        
-        self.scrollBarLabel = [[[MDCScrollBarLabel alloc] initWithScrollView:self.tableView] autorelease];
-        
-        [self.view addSubview:self.tableView];
-        [self.tableView insertSubview:self.scrollBarLabel atIndex:0];
-    }
-    return self;
-}
 
 
 #pragma mark - UIViewController Overrides
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (void)viewDidLoad
 {
-    return YES;
+    [super viewDidLoad];
+
+    self.title = @"UITableView";
+
+    CGSize size = self.view.frame.size;
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)
+                                                  style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+
+    self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:self.tableView];
+
+    [self.view addSubview:self.tableView];
+    [self.tableView insertSubview:self.scrollBarLabel atIndex:0];
 }
+
 
 - (void)viewDidUnload
 {
-    tableView_.delegate = nil;
-    tableView_.dataSource = nil;
-    [tableView_ release];
-    tableView_ = nil;
-    
+    self.tableView.delegate = nil;
+    self.tableView.dataSource = nil;
+    self.tableView = nil;
+
     [super viewDidUnload];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
 }
 
 
@@ -76,10 +74,10 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [super scrollViewDidScroll:scrollView];
-    
+
     // Set label
     float progress = self.tableView.contentOffset.y / self.tableView.contentSize.height;
-    self.scrollBarLabel.text = [NSString stringWithFormat:@"%f%", progress];
+    self.scrollBarLabel.text = [NSString stringWithFormat:@"%f", progress];
 }
 
 
@@ -97,15 +95,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    static NSString *cellIdentifier = @"MDCTableViewControllerCellIdentifier";
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:cellIdentifier];
     }
-    
+
     cell.textLabel.text = [NSString stringWithFormat:@"Cell #%d", [indexPath row]];
-    
+
     return cell;
 }
 
@@ -116,6 +115,5 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
 
 @end

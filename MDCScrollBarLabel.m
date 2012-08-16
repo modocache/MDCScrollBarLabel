@@ -25,14 +25,15 @@
 #import "MDCScrollBarLabel.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation MDCScrollBarLabel
-
-@synthesize scrollView = scrollView_;
 
 static float const kHorizontalPadding   = 15.0f;
 static float const kVerticalPadding     = 30.0f;
 static float const kLabelWidth          = 100.0f;
 static float const kLabelHeight         = 30.0f;
+
+
+@implementation MDCScrollBarLabel
+
 
 #pragma mark - Object Lifecycle
 
@@ -60,8 +61,7 @@ static float const kLabelHeight         = 30.0f;
 
 - (void)dealloc
 {
-    scrollView_ = nil;
-    [super dealloc];
+    self.scrollView = nil;
 }
 
 #pragma mark - Public Interface

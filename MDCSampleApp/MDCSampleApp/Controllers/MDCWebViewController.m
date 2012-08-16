@@ -24,46 +24,40 @@
 
 #import "MDCWebViewController.h"
 
-@implementation MDCWebViewController
 
-@synthesize webView = webView_;
+@interface MDCWebViewController () <UIWebViewDelegate>
+@property (nonatomic, strong) UIWebView *webView;
+@end
+
+
+@implementation MDCWebViewController
 
 
 #pragma mark - Object Lifecycle
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)viewDidLoad
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.title = @"UIWebView";
-        self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth |
-                                     UIViewAutoresizingFlexibleHeight;
-        
-        self.webView = [[[UIWebView alloc] initWithFrame:CGRectMake(0, 0,
-                                                                   self.view.frame.size.width,
-                                                                   self.view.frame.size.height)] autorelease];
-        self.webView.autoresizingMask = self.view.autoresizingMask;
-        self.webView.delegate = self;
-        
-        // On iOS5+ this can be accessed via self.webView.scrollView
-        UIScrollView *scrollView = [self.webView valueForKey:@"_scrollView"];
-        scrollView.delegate = self;
-        self.scrollBarLabel = [[[MDCScrollBarLabel alloc] initWithScrollView:scrollView] autorelease];
-        [scrollView addSubview:self.scrollBarLabel];
-        
-        [self.view addSubview:self.webView];
-    }
-    return self;
+    [super viewDidLoad];
+
+    self.title = @"UIWebView";
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth |
+                                 UIViewAutoresizingFlexibleHeight;
+
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0,
+                                                               self.view.frame.size.width,
+                                                               self.view.frame.size.height)];
+    self.webView.autoresizingMask = self.view.autoresizingMask;
+    self.webView.delegate = self;
+
+    // On iOS5+ this can be accessed via self.webView.scrollView
+    UIScrollView *scrollView = [self.webView valueForKey:@"_scrollView"];
+    scrollView.delegate = self;
+    self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:scrollView];
+    [scrollView addSubview:self.scrollBarLabel];
+
+    [self.view addSubview:self.webView];
 }
 
-- (void)dealloc
-{
-    webView_.delegate = nil;
-    [webView_ release];
-    webView_ = nil;
-    
-    [super dealloc];
-}
 
 #pragma mark - UIViewController Overrides
 
@@ -80,10 +74,10 @@
 
 - (void)viewDidUnload
 {
-    webView_.delegate = nil;
-    [webView_ release];
-    webView_ = nil;
-    
+    self.scrollBarLabel = nil;
+    self.webView.delegate = nil;
+    self.webView = nil;
+
     [super viewDidUnload];
 }
 
@@ -93,13 +87,12 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [super scrollViewDidScroll:scrollView];
-    
+
     // Set label
     UIScrollView *webScrollView = [self.webView valueForKey:@"_scrollView"];
-    
-    float progress = webScrollView.contentOffset.y / webScrollView.contentSize.height;
-    self.scrollBarLabel.text = [NSString stringWithFormat:@"%f%", progress];
-}
 
+    float progress = webScrollView.contentOffset.y / webScrollView.contentSize.height;
+    self.scrollBarLabel.text = [NSString stringWithFormat:@"%f", progress];
+}
 
 @end

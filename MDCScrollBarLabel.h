@@ -24,9 +24,10 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface MDCScrollBarLabel : UILabel
 
-@property (nonatomic, assign) UIScrollView *scrollView;
+@property (nonatomic, weak) UIScrollView *scrollView;
 
 - (id)initWithScrollView:(UIScrollView *)scrollView;
 - (void)adjustPositionForScrollView:(UIScrollView *)scrollView;
