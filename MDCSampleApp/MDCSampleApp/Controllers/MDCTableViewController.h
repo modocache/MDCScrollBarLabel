@@ -28,4 +28,6 @@
 
 @interface MDCTableViewController : MDCScrollBarViewController
 
+@property (nonatomic, strong) UITableView *tableView;
+
 @end

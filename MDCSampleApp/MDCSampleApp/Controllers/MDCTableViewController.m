@@ -25,8 +25,11 @@
 #import "MDCTableViewController.h"
 
 
+static CGFloat const kMDCTableViewControllerRowHeight = 100.0f;
+
+
 @interface MDCTableViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, strong) UITableView *tableView;
+
 @end
 
 
@@ -46,6 +49,9 @@
                                                   style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.rowHeight = kMDCTableViewControllerRowHeight;
+    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth |
+                                      UIViewAutoresizingFlexibleHeight;
 
     self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:self.tableView];
 
@@ -75,9 +81,9 @@
 {
     [super scrollViewDidScroll:scrollView];
 
-    // Set label
-    float progress = self.tableView.contentOffset.y / self.tableView.contentSize.height;
-    self.scrollBarLabel.text = [NSString stringWithFormat:@"%f", progress];
+    NSInteger rowNumber = self.scrollBarLabel.frame.origin.y / kMDCTableViewControllerRowHeight;
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:-(60 * 12 * rowNumber)];
+    self.scrollBarLabel.date = date;
 }
 
 
@@ -90,7 +96,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return 200;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -103,7 +109,8 @@
                                       reuseIdentifier:cellIdentifier];
     }
 
-    cell.textLabel.text = [NSString stringWithFormat:@"Cell #%d", [indexPath row]];
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:-(60 * 12 * indexPath.row)];
+    cell.textLabel.text = [date description];
 
     return cell;
 }

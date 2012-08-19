@@ -25,13 +25,18 @@
 #import <Foundation/Foundation.h>
 
 
-@interface MDCScrollBarLabel : UILabel
+@interface MDCScrollBarLabel : UIView
 
 @property (nonatomic, weak) UIScrollView *scrollView;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, readonly) BOOL displayed;
+@property (nonatomic, assign) NSTimeInterval clockAnimationDuration;
+@property (nonatomic, assign) NSTimeInterval fadeAnimationDuration;
+@property (nonatomic, assign) CGFloat horizontalPadding;
+@property (nonatomic, assign) CGFloat verticalPadding;
 
 - (id)initWithScrollView:(UIScrollView *)scrollView;
 - (void)adjustPositionForScrollView:(UIScrollView *)scrollView;
-- (void)fadeIn;
-- (void)fadeOut;
+- (void)setDisplayed:(BOOL)displayed animated:(BOOL)animated afterDelay:(NSTimeInterval)delay;
 
 @end

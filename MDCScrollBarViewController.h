@@ -29,5 +29,6 @@
 @interface MDCScrollBarViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, strong) MDCScrollBarLabel *scrollBarLabel;
+@property (nonatomic, assign) NSTimeInterval scrollBarFadeDelay;
 
 @end

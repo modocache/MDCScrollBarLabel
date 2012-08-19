@@ -23,9 +23,9 @@
 
 
 #import <UIKit/UIKit.h>
-#import "MDCScrollBarViewController.h"
+#import "MDCTableViewController.h"
 
 
-@interface MDCWebViewController : MDCScrollBarViewController
+@interface MDCEmbeddedTableViewController : MDCTableViewController
 
 @end

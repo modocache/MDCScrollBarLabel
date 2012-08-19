@@ -24,17 +24,13 @@
 
 #import "MDCRootViewController.h"
 
-#import "MDCScrollViewController.h"
-#import "MDCSmallScrollViewController.h"
+#import "MDCEmbeddedTableViewController.h"
 #import "MDCTableViewController.h"
-#import "MDCWebViewController.h"
 
 
 typedef enum {
-    MDCRootViewControllerCellTagUIScrollView = 0,
-    MDCRootViewControllerCellTagEmbeddedUIScrollView,
-    MDCRootViewControllerCellTagUIWebView,
-    MDCRootViewControllerCellTagUITableView,
+    MDCRootViewControllerCellTagUITableView = 0,
+    MDCRootViewControllerCellTagEmbeddedUITableView
 } MDCRootViewControllerCellTag;
 
 
@@ -73,7 +69,7 @@ typedef enum {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -87,18 +83,11 @@ typedef enum {
     }
 
     switch (indexPath.row) {
-        case MDCRootViewControllerCellTagUIScrollView:
-            cell.textLabel.text = @"UIScrollView";
-            break;
-        case MDCRootViewControllerCellTagEmbeddedUIScrollView:
-            cell.textLabel.text = @"Embedded UIScrollView";
-            break;
-        case MDCRootViewControllerCellTagUIWebView:
-            cell.textLabel.text = @"UIWebView";
-            break;
         case MDCRootViewControllerCellTagUITableView:
-            cell.textLabel.text = @"UITableView";
+            cell.textLabel.text = NSLocalizedString(@"UITableView", nil);
             break;
+        case MDCRootViewControllerCellTagEmbeddedUITableView:
+            cell.textLabel.text = NSLocalizedString(@"Embedded UITableView", nil);
         default:
             break;
     }
@@ -112,24 +101,14 @@ typedef enum {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
-        case MDCRootViewControllerCellTagUIScrollView: {
-            MDCScrollViewController *scrollViewController = [MDCScrollViewController new];
-            [self.navigationController pushViewController:scrollViewController animated:YES];
-            break;
-        }
-        case MDCRootViewControllerCellTagEmbeddedUIScrollView: {
-            MDCSmallScrollViewController *scrollViewController = [MDCSmallScrollViewController new];
-            [self.navigationController pushViewController:scrollViewController animated:YES];
-            break;
-        }
-        case MDCRootViewControllerCellTagUIWebView: {
-            MDCWebViewController *webViewController = [MDCWebViewController new];
-            [self.navigationController pushViewController:webViewController animated:YES];
-            break;
-        }
         case MDCRootViewControllerCellTagUITableView: {
             MDCTableViewController *tableViewController = [MDCTableViewController new];
             [self.navigationController pushViewController:tableViewController animated:YES];
+            break;
+        }
+        case MDCRootViewControllerCellTagEmbeddedUITableView: {
+            MDCEmbeddedTableViewController *embeddedTableViewController = [MDCEmbeddedTableViewController new];
+            [self.navigationController pushViewController:embeddedTableViewController animated:YES];
             break;
         }
         default:

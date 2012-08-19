@@ -25,7 +25,38 @@
 #import "MDCScrollBarViewController.h"
 
 
+static CGFloat const kMDCScrollBarViewControllerDefaultFadeDelay = 1.0f;
+
+
 @implementation MDCScrollBarViewController
+
+
+#pragma mark - Object Lifecycle
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _scrollBarFadeDelay = kMDCScrollBarViewControllerDefaultFadeDelay;
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        _scrollBarFadeDelay = kMDCScrollBarViewControllerDefaultFadeDelay;
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        _scrollBarFadeDelay = kMDCScrollBarViewControllerDefaultFadeDelay;
+    }
+    return self;
+}
 
 
 #pragma mark - UIViewController Overrides
@@ -43,33 +74,25 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self.scrollBarLabel adjustPositionForScrollView:scrollView];
-    [self.scrollBarLabel fadeIn];
+    [self.scrollBarLabel setDisplayed:YES animated:YES afterDelay:0.0f];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self.scrollBarLabel performSelector:@selector(fadeOut)
-                              withObject:nil
-                              afterDelay:0.5];
+    [self.scrollBarLabel setDisplayed:NO animated:YES afterDelay:self.scrollBarFadeDelay];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (!decelerate) {
-        [self.scrollBarLabel performSelector:@selector(fadeOut)
-                                  withObject:nil
-                                  afterDelay:0.5];
+        [self.scrollBarLabel setDisplayed:NO animated:YES afterDelay:self.scrollBarFadeDelay];
     }
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    [self.scrollBarLabel performSelector:@selector(fadeOut)
-                              withObject:nil
-                              afterDelay:0.5];
+    [self.scrollBarLabel setDisplayed:NO animated:YES afterDelay:self.scrollBarFadeDelay];
 }
 
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
-    [self.scrollBarLabel performSelector:@selector(fadeOut)
-                              withObject:nil
-                              afterDelay:0.5];
+    [self.scrollBarLabel setDisplayed:NO animated:YES afterDelay:self.scrollBarFadeDelay];
 }
 
 @end

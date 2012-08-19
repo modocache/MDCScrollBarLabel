@@ -7,9 +7,7 @@ Y'know, like the clock on Path.
 
 ## Screenshots
 
-- [UIScrollView](http://cl.ly/3i3x1s2n071r050r1t2k)
-- [UITableView](http://cl.ly/0F3M2r0h1r2301130C09)
-- [UIWebView](http://cl.ly/1447370Q0u023c1S1V2E)
+![MDCScrollBarLabel GIF](http://f.cl.ly/items/2U3d0j3G3O2j1W1Q3525/mdcscrollbarlabel.gif)
 
 ## Usage
 
@@ -17,7 +15,7 @@ See the example application for usage.
 
 Basically, you have two options. You can:
 
-- Subclass MDCScrollBarViewController and set an MDCScrollBarLabel to it's
+- Subclass MDCScrollBarViewController and set an MDCScrollBarLabel to its
   scrollBarLabel property.
 - Implement a UIViewController which is a UIScrollBarDelegate, then call the
   fade in/out logic for the label as you'd like.
@@ -27,11 +25,7 @@ the whole thing to better suit your needs.
 
 ## To-do, or How to Contribute
 
-- I'm aware MDCScrollBarLabel isn't the sexiest UI you've ever seen.
-  It would be nice to have a cool background image.
-  An alternative would be to construct an init method or something
-  which allows users to customize their own.
-- Animation is wonky when switching between portrait and landscape.
+- Check out the Github issues for ideas on what to work on, or create your own for features you'd like to see!
 
 ## License
 

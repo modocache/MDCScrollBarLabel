@@ -22,10 +22,31 @@
 //
 
 
-#import <UIKit/UIKit.h>
-#import "MDCScrollBarViewController.h"
+#import "MDCEmbeddedTableViewController.h"
 
 
-@interface MDCSmallScrollViewController : MDCScrollBarViewController
+static CGFloat const kMDCTableViewPadding = 35.0f;
+
+
+@interface MDCEmbeddedTableViewController ()
+@property (nonatomic, strong) UIScrollView *scrollView;
+@end
+
+
+@implementation MDCEmbeddedTableViewController
+
+
+#pragma mark - UIViewController Overrides
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.title = NSLocalizedString(@"Embedded UITableView", nil);
+    self.view.backgroundColor = [UIColor darkGrayColor];
+    self.tableView.frame = CGRectMake(kMDCTableViewPadding,
+                                      kMDCTableViewPadding,
+                                      self.view.frame.size.width - kMDCTableViewPadding * 2,
+                                      self.view.frame.size.height - kMDCTableViewPadding * 2);
+}
 
 @end
