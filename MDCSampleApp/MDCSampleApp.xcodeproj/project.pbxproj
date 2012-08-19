@@ -285,8 +285,7 @@
 		DA7B95E6150A8B7D00800EF2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
-				ORGANIZATIONNAME = "Gree, Inc.";
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = DA7B95E9150A8B7D00800EF2 /* Build configuration list for PBXProject "MDCSampleApp" */;
 			compatibilityVersion = "Xcode 3.2";
