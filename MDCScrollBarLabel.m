@@ -172,12 +172,13 @@ typedef enum {
     }
     
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateFormat = @"hh:mm a";
+    dateFormatter.dateFormat = @"h:mm a";
     NSString *dateString = [dateFormatter stringFromDate:date];
     self.timeLabel.text = dateString;
 
     // Grab hour in 12hr format, regardless of user settings.
-    NSUInteger hour = [[[dateString componentsSeparatedByString:@":"] objectAtIndex:0] integerValue];
+    NSString *hourString = [[dateString componentsSeparatedByString:@":"] objectAtIndex:0];
+    NSUInteger hour = [hourString integerValue];
 
     BOOL forward = [self.displayedDate compare:date] == NSOrderedAscending;
     [self setClockHandWithType:MDCClockHandTypeHour
