@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		DA2785EC15DC9EC3005FD9DF /* MDCEmbeddedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2785EB15DC9EC3005FD9DF /* MDCEmbeddedTableViewController.m */; };
+		DA37439215E1BCA6006FFAAC /* clock-center.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37438815E1BCA6006FFAAC /* clock-center.png */; };
+		DA37439315E1BCA6006FFAAC /* clock-center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37438915E1BCA6006FFAAC /* clock-center@2x.png */; };
+		DA37439415E1BCA6006FFAAC /* clock-face.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37438A15E1BCA6006FFAAC /* clock-face.png */; };
+		DA37439515E1BCA6006FFAAC /* clock-face@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37438B15E1BCA6006FFAAC /* clock-face@2x.png */; };
+		DA37439615E1BCA6006FFAAC /* clock-hour-hand.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37438C15E1BCA6006FFAAC /* clock-hour-hand.png */; };
+		DA37439715E1BCA6006FFAAC /* clock-hour-hand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37438D15E1BCA6006FFAAC /* clock-hour-hand@2x.png */; };
+		DA37439815E1BCA6006FFAAC /* clock-minute-hand.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37438E15E1BCA6006FFAAC /* clock-minute-hand.png */; };
+		DA37439915E1BCA6006FFAAC /* clock-minute-hand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37438F15E1BCA6006FFAAC /* clock-minute-hand@2x.png */; };
+		DA37439A15E1BCA6006FFAAC /* label-background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37439015E1BCA6006FFAAC /* label-background.png */; };
+		DA37439B15E1BCA6006FFAAC /* label-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37439115E1BCA6006FFAAC /* label-background@2x.png */; };
 		DA3B9930150B885D00F8A02E /* MDCScrollBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3B992F150B885D00F8A02E /* MDCScrollBarViewController.m */; };
 		DA3B9931150B885D00F8A02E /* MDCScrollBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3B992F150B885D00F8A02E /* MDCScrollBarViewController.m */; };
 		DA7B95F4150A8B7D00800EF2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7B95F3150A8B7D00800EF2 /* UIKit.framework */; };
@@ -29,16 +39,6 @@
 		DA7B9681150B618100800EF2 /* MDCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9677150B618100800EF2 /* MDCAppDelegate.m */; };
 		DA7B968A150B692300800EF2 /* MDCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9689150B692200800EF2 /* MDCTableViewController.m */; };
 		DA7B968B150B692300800EF2 /* MDCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7B9689150B692200800EF2 /* MDCTableViewController.m */; };
-		DADB370515DC876B00A9231E /* clock-center.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB36FB15DC876B00A9231E /* clock-center.png */; };
-		DADB370615DC876B00A9231E /* clock-center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB36FC15DC876B00A9231E /* clock-center@2x.png */; };
-		DADB370715DC876B00A9231E /* clock-face.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB36FD15DC876B00A9231E /* clock-face.png */; };
-		DADB370815DC876B00A9231E /* clock-face@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB36FE15DC876B00A9231E /* clock-face@2x.png */; };
-		DADB370915DC876B00A9231E /* clock-hour-hand.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB36FF15DC876B00A9231E /* clock-hour-hand.png */; };
-		DADB370B15DC876B00A9231E /* clock-minute-hand.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB370115DC876B00A9231E /* clock-minute-hand.png */; };
-		DADB370C15DC876B00A9231E /* clock-minute-hand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB370215DC876B00A9231E /* clock-minute-hand@2x.png */; };
-		DADB370D15DC876B00A9231E /* label-background.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB370315DC876B00A9231E /* label-background.png */; };
-		DADB370E15DC876B00A9231E /* label-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DADB370415DC876B00A9231E /* label-background@2x.png */; };
-		DAE4173A15E0A76000445B8D /* clock-hour-hand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAE4173915E0A76000445B8D /* clock-hour-hand@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +54,16 @@
 /* Begin PBXFileReference section */
 		DA2785EA15DC9EC3005FD9DF /* MDCEmbeddedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCEmbeddedTableViewController.h; sourceTree = "<group>"; };
 		DA2785EB15DC9EC3005FD9DF /* MDCEmbeddedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCEmbeddedTableViewController.m; sourceTree = "<group>"; };
+		DA37438815E1BCA6006FFAAC /* clock-center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-center.png"; sourceTree = "<group>"; };
+		DA37438915E1BCA6006FFAAC /* clock-center@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-center@2x.png"; sourceTree = "<group>"; };
+		DA37438A15E1BCA6006FFAAC /* clock-face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face.png"; sourceTree = "<group>"; };
+		DA37438B15E1BCA6006FFAAC /* clock-face@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face@2x.png"; sourceTree = "<group>"; };
+		DA37438C15E1BCA6006FFAAC /* clock-hour-hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-hour-hand.png"; sourceTree = "<group>"; };
+		DA37438D15E1BCA6006FFAAC /* clock-hour-hand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-hour-hand@2x.png"; sourceTree = "<group>"; };
+		DA37438E15E1BCA6006FFAAC /* clock-minute-hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-minute-hand.png"; sourceTree = "<group>"; };
+		DA37438F15E1BCA6006FFAAC /* clock-minute-hand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-minute-hand@2x.png"; sourceTree = "<group>"; };
+		DA37439015E1BCA6006FFAAC /* label-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "label-background.png"; sourceTree = "<group>"; };
+		DA37439115E1BCA6006FFAAC /* label-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "label-background@2x.png"; sourceTree = "<group>"; };
 		DA3B992E150B885D00F8A02E /* MDCScrollBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCScrollBarViewController.h; path = ../../MDCScrollBarViewController.h; sourceTree = "<group>"; };
 		DA3B992F150B885D00F8A02E /* MDCScrollBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCScrollBarViewController.m; path = ../../MDCScrollBarViewController.m; sourceTree = "<group>"; };
 		DA7B95EF150A8B7D00800EF2 /* MDCSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDCSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,16 +89,6 @@
 		DA7B9687150B622C00800EF2 /* MDCSampleApp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MDCSampleApp-Prefix.pch"; sourceTree = "<group>"; };
 		DA7B9688150B692200800EF2 /* MDCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCTableViewController.h; sourceTree = "<group>"; };
 		DA7B9689150B692200800EF2 /* MDCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCTableViewController.m; sourceTree = "<group>"; };
-		DADB36FB15DC876B00A9231E /* clock-center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-center.png"; sourceTree = "<group>"; };
-		DADB36FC15DC876B00A9231E /* clock-center@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-center@2x.png"; sourceTree = "<group>"; };
-		DADB36FD15DC876B00A9231E /* clock-face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face.png"; sourceTree = "<group>"; };
-		DADB36FE15DC876B00A9231E /* clock-face@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face@2x.png"; sourceTree = "<group>"; };
-		DADB36FF15DC876B00A9231E /* clock-hour-hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-hour-hand.png"; sourceTree = "<group>"; };
-		DADB370115DC876B00A9231E /* clock-minute-hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-minute-hand.png"; sourceTree = "<group>"; };
-		DADB370215DC876B00A9231E /* clock-minute-hand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-minute-hand@2x.png"; sourceTree = "<group>"; };
-		DADB370315DC876B00A9231E /* label-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "label-background.png"; sourceTree = "<group>"; };
-		DADB370415DC876B00A9231E /* label-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "label-background@2x.png"; sourceTree = "<group>"; };
-		DAE4173915E0A76000445B8D /* clock-hour-hand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-hour-hand@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +116,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA37438615E1BCA6006FFAAC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DA37438715E1BCA6006FFAAC /* Images */,
+			);
+			name = Resources;
+			path = ../../Resources;
+			sourceTree = "<group>";
+		};
+		DA37438715E1BCA6006FFAAC /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				DA37438815E1BCA6006FFAAC /* clock-center.png */,
+				DA37438915E1BCA6006FFAAC /* clock-center@2x.png */,
+				DA37438A15E1BCA6006FFAAC /* clock-face.png */,
+				DA37438B15E1BCA6006FFAAC /* clock-face@2x.png */,
+				DA37438C15E1BCA6006FFAAC /* clock-hour-hand.png */,
+				DA37438D15E1BCA6006FFAAC /* clock-hour-hand@2x.png */,
+				DA37438E15E1BCA6006FFAAC /* clock-minute-hand.png */,
+				DA37438F15E1BCA6006FFAAC /* clock-minute-hand@2x.png */,
+				DA37439015E1BCA6006FFAAC /* label-background.png */,
+				DA37439115E1BCA6006FFAAC /* label-background@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		DA7B95E4150A8B7D00800EF2 = {
 			isa = PBXGroup;
 			children = (
@@ -150,7 +176,7 @@
 		DA7B95F9150A8B7D00800EF2 /* MDCSampleApp */ = {
 			isa = PBXGroup;
 			children = (
-				DADB36F915DC876B00A9231E /* Resources */,
+				DA37438615E1BCA6006FFAAC /* Resources */,
 				DA7B966B150B618100800EF2 /* Controllers */,
 				DA7B9675150B618100800EF2 /* Delegate */,
 				DA7B95FA150A8B7D00800EF2 /* Supporting Files */,
@@ -212,32 +238,6 @@
 				DA7B9677150B618100800EF2 /* MDCAppDelegate.m */,
 			);
 			path = Delegate;
-			sourceTree = "<group>";
-		};
-		DADB36F915DC876B00A9231E /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				DADB36FA15DC876B00A9231E /* Images */,
-			);
-			name = Resources;
-			path = MDCSampleApp/Resources;
-			sourceTree = SOURCE_ROOT;
-		};
-		DADB36FA15DC876B00A9231E /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				DADB36FB15DC876B00A9231E /* clock-center.png */,
-				DADB36FC15DC876B00A9231E /* clock-center@2x.png */,
-				DADB36FD15DC876B00A9231E /* clock-face.png */,
-				DADB36FE15DC876B00A9231E /* clock-face@2x.png */,
-				DADB36FF15DC876B00A9231E /* clock-hour-hand.png */,
-				DAE4173915E0A76000445B8D /* clock-hour-hand@2x.png */,
-				DADB370115DC876B00A9231E /* clock-minute-hand.png */,
-				DADB370215DC876B00A9231E /* clock-minute-hand@2x.png */,
-				DADB370315DC876B00A9231E /* label-background.png */,
-				DADB370415DC876B00A9231E /* label-background@2x.png */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,16 +311,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA7B95FE150A8B7D00800EF2 /* InfoPlist.strings in Resources */,
-				DADB370515DC876B00A9231E /* clock-center.png in Resources */,
-				DADB370615DC876B00A9231E /* clock-center@2x.png in Resources */,
-				DADB370715DC876B00A9231E /* clock-face.png in Resources */,
-				DADB370815DC876B00A9231E /* clock-face@2x.png in Resources */,
-				DADB370915DC876B00A9231E /* clock-hour-hand.png in Resources */,
-				DADB370B15DC876B00A9231E /* clock-minute-hand.png in Resources */,
-				DADB370C15DC876B00A9231E /* clock-minute-hand@2x.png in Resources */,
-				DADB370D15DC876B00A9231E /* label-background.png in Resources */,
-				DADB370E15DC876B00A9231E /* label-background@2x.png in Resources */,
-				DAE4173A15E0A76000445B8D /* clock-hour-hand@2x.png in Resources */,
+				DA37439215E1BCA6006FFAAC /* clock-center.png in Resources */,
+				DA37439315E1BCA6006FFAAC /* clock-center@2x.png in Resources */,
+				DA37439415E1BCA6006FFAAC /* clock-face.png in Resources */,
+				DA37439515E1BCA6006FFAAC /* clock-face@2x.png in Resources */,
+				DA37439615E1BCA6006FFAAC /* clock-hour-hand.png in Resources */,
+				DA37439715E1BCA6006FFAAC /* clock-hour-hand@2x.png in Resources */,
+				DA37439815E1BCA6006FFAAC /* clock-minute-hand.png in Resources */,
+				DA37439915E1BCA6006FFAAC /* clock-minute-hand@2x.png in Resources */,
+				DA37439A15E1BCA6006FFAAC /* label-background.png in Resources */,
+				DA37439B15E1BCA6006FFAAC /* label-background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
