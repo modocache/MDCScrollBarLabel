@@ -56,9 +56,8 @@ typedef enum {
 @property (nonatomic, strong) UIImageView *minuteHandImageView;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UILabel *weekdayLabel;
-
-- (void)setClockHandWithType:(MDCClockHandType)type toValue:(NSUInteger)value inFuture:(BOOL)inFuture animated:(BOOL)animated;
-- (void)setWeekdayLabelHidden:(BOOL)hidden animated:(BOOL)animated;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (nonatomic, strong) NSDateFormatter *weekdayDateFormatter;
 @end
 
 
@@ -81,6 +80,12 @@ typedef enum {
         _verticalPadding = kMDCScrollBarLabelDefaultVerticalPadding;
 
         _scrollView = scrollView;
+
+        _dateFormatter = [NSDateFormatter new];
+        _dateFormatter.dateFormat = @"h:mm a";
+
+        _weekdayDateFormatter = [NSDateFormatter new];
+        _weekdayDateFormatter.dateFormat = @"EEEE";
 
         self.alpha = 0.0f;
         self.backgroundColor = [UIColor clearColor];
@@ -162,18 +167,14 @@ typedef enum {
         if (yesterdayComponents.weekday == dateComponents.weekday) {
             self.weekdayLabel.text = NSLocalizedString(@"Yesterday", nil);
         } else {
-            NSDateFormatter *weekdayDateFormatter = [NSDateFormatter new];
-            weekdayDateFormatter.dateFormat = @"EEEE";
-            self.weekdayLabel.text = [weekdayDateFormatter stringFromDate:date];
+            self.weekdayLabel.text = [self.weekdayDateFormatter stringFromDate:date];
         }
         [self setWeekdayLabelHidden:NO animated:YES];
     } else {
         [self setWeekdayLabelHidden:YES animated:YES];
     }
-    
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateFormat = @"h:mm a";
-    NSString *dateString = [dateFormatter stringFromDate:date];
+
+    NSString *dateString = [self.dateFormatter stringFromDate:date];
     self.timeLabel.text = dateString;
 
     // Grab hour in 12hr format, regardless of user settings.
