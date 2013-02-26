@@ -56,6 +56,8 @@ typedef enum {
 @property (nonatomic, strong) UIImageView *minuteHandImageView;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UILabel *weekdayLabel;
+
+@property (nonatomic, strong) NSCalendar *calendar;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, strong) NSDateFormatter *weekdayDateFormatter;
 @end
@@ -80,6 +82,8 @@ typedef enum {
         _verticalPadding = kMDCScrollBarLabelDefaultVerticalPadding;
 
         _scrollView = scrollView;
+
+        _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
         _dateFormatter = [NSDateFormatter new];
         _dateFormatter.dateFormat = @"h:mm a";
@@ -154,15 +158,14 @@ typedef enum {
 #pragma mark - Public Interface
 
 - (void)setDate:(NSDate *)date {
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     unsigned int unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |
                              NSWeekdayCalendarUnit | NSMinuteCalendarUnit;
-    NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
-    NSDateComponents *nowComponents = [calendar components:unitFlags fromDate:[NSDate date]];
+    NSDateComponents *dateComponents = [self.calendar components:unitFlags fromDate:date];
+    NSDateComponents *nowComponents = [self.calendar components:unitFlags fromDate:[NSDate date]];
 
     if (nowComponents.year > dateComponents.year || nowComponents.month > dateComponents.month || nowComponents.day > dateComponents.day) {
         NSDate *yesterday = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 60.0f * 24.0f)];
-        NSDateComponents *yesterdayComponents = [calendar components:unitFlags fromDate:yesterday];
+        NSDateComponents *yesterdayComponents = [self.calendar components:unitFlags fromDate:yesterday];
 
         if (yesterdayComponents.weekday == dateComponents.weekday) {
             self.weekdayLabel.text = NSLocalizedString(@"Yesterday", nil);
