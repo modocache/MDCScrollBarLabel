@@ -54,9 +54,9 @@ static CGFloat const kMDCTableViewControllerRowHeight = 100.0f;
                                       UIViewAutoresizingFlexibleHeight;
 
     self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:self.tableView];
+    [self.tableView addSubview:self.scrollBarLabel];
 
     [self.view addSubview:self.tableView];
-    [self.tableView insertSubview:self.scrollBarLabel atIndex:0];
 }
 
 

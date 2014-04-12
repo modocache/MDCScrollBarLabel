@@ -210,7 +210,7 @@ typedef enum {
 
     float topLimit = self.verticalPadding + scrollView.contentOffset.y;
 
-    if (y < topLimit) {
+    if (y < topLimit || isnan(y)) {
         y = topLimit;
     }
 
