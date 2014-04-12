@@ -1,6 +1,6 @@
 # MDCScrollBarLabel
 
-An animated scroll bar to present extra information to the used when scrolling on a UIScrollView.
+An animated scroll bar to present extra information when scrolling on a UIScrollView.
 
 Y'know, like the clock on Path.
 
