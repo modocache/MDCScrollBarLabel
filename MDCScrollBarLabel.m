@@ -83,7 +83,7 @@ typedef enum {
 
         _scrollView = scrollView;
 
-        _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 
         _dateFormatter = [NSDateFormatter new];
         _dateFormatter.dateFormat = @"h:mm a";
@@ -143,7 +143,7 @@ typedef enum {
             label.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.0f];
             label.shadowColor = [UIColor darkTextColor];
             label.shadowOffset = CGSizeMake(0, -1);
-            label.textAlignment = UITextAlignmentLeft;
+            label.textAlignment = NSTextAlignmentLeft;
             label.backgroundColor = [UIColor clearColor];
         }
         [self addSubview:self.timeLabel];
@@ -158,8 +158,8 @@ typedef enum {
 #pragma mark - Public Interface
 
 - (void)setDate:(NSDate *)date {
-    unsigned int unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |
-                             NSWeekdayCalendarUnit | NSMinuteCalendarUnit;
+    unsigned int unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |
+                             NSCalendarUnitWeekday | NSCalendarUnitMinute;
     NSDateComponents *dateComponents = [self.calendar components:unitFlags fromDate:date];
     NSDateComponents *nowComponents = [self.calendar components:unitFlags fromDate:[NSDate date]];
 
