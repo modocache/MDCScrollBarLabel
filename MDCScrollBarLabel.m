@@ -165,12 +165,28 @@ typedef enum {
 
     if (nowComponents.year > dateComponents.year || nowComponents.month > dateComponents.month || nowComponents.day > dateComponents.day) {
         NSDate *yesterday = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 60.0f * 24.0f)];
-        NSDateComponents *yesterdayComponents = [self.calendar components:unitFlags fromDate:yesterday];
-
-        if (yesterdayComponents.weekday == dateComponents.weekday) {
+        
+        NSDate *beginningOfTheDay = [NSDate date];
+        NSCalendar *cal = [NSCalendar currentCalendar];
+        NSDateComponents *components = [cal components:( NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond ) fromDate:beginningOfTheDay];
+        [components setHour:0];
+        [components setMinute:0];
+        [components setSecond:0];
+        beginningOfTheDay = [cal dateFromComponents:components];
+        
+        if ([yesterday compare:date]!=NSOrderedDescending) {
             self.weekdayLabel.text = NSLocalizedString(@"Yesterday", nil);
         } else {
-            self.weekdayLabel.text = [self.weekdayDateFormatter stringFromDate:date];
+            // or does it correspond to the elapsed week ?
+            NSDate* elapsedWeek = [beginningOfTheDay dateByAddingTimeInterval:-24*60*60*7];
+            if ([elapsedWeek compare:date]!=NSOrderedDescending) {
+                [self.weekdayDateFormatter setDateFormat:@"EEEE"];
+                self.weekdayLabel.text = [self.weekdayDateFormatter stringFromDate:date];
+            } else {
+                [self.weekdayDateFormatter setTimeStyle:NSDateFormatterNoStyle];
+                [self.weekdayDateFormatter setDateStyle:NSDateFormatterShortStyle];
+                self.weekdayLabel.text = [self.weekdayDateFormatter stringFromDate:date];
+            }
         }
         [self setWeekdayLabelHidden:NO animated:YES];
     } else {
