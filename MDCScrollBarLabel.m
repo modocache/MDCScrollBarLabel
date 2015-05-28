@@ -83,7 +83,7 @@ typedef enum {
 
         _scrollView = scrollView;
 
-        _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 
         _dateFormatter = [NSDateFormatter new];
         _dateFormatter.dateFormat = @"h:mm a";
@@ -143,7 +143,7 @@ typedef enum {
             label.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.0f];
             label.shadowColor = [UIColor darkTextColor];
             label.shadowOffset = CGSizeMake(0, -1);
-            label.textAlignment = UITextAlignmentLeft;
+            label.textAlignment = NSTextAlignmentLeft;
             label.backgroundColor = [UIColor clearColor];
         }
         [self addSubview:self.timeLabel];
@@ -158,19 +158,35 @@ typedef enum {
 #pragma mark - Public Interface
 
 - (void)setDate:(NSDate *)date {
-    unsigned int unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit |
-                             NSWeekdayCalendarUnit | NSMinuteCalendarUnit;
+    unsigned int unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |
+                             NSCalendarUnitWeekday | NSCalendarUnitMinute;
     NSDateComponents *dateComponents = [self.calendar components:unitFlags fromDate:date];
     NSDateComponents *nowComponents = [self.calendar components:unitFlags fromDate:[NSDate date]];
 
     if (nowComponents.year > dateComponents.year || nowComponents.month > dateComponents.month || nowComponents.day > dateComponents.day) {
         NSDate *yesterday = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 60.0f * 24.0f)];
-        NSDateComponents *yesterdayComponents = [self.calendar components:unitFlags fromDate:yesterday];
-
-        if (yesterdayComponents.weekday == dateComponents.weekday) {
+        
+        NSDate *beginningOfTheDay = [NSDate date];
+        NSCalendar *cal = [NSCalendar currentCalendar];
+        NSDateComponents *components = [cal components:( NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond ) fromDate:beginningOfTheDay];
+        [components setHour:0];
+        [components setMinute:0];
+        [components setSecond:0];
+        beginningOfTheDay = [cal dateFromComponents:components];
+        
+        if ([yesterday compare:date]!=NSOrderedDescending) {
             self.weekdayLabel.text = NSLocalizedString(@"Yesterday", nil);
         } else {
-            self.weekdayLabel.text = [self.weekdayDateFormatter stringFromDate:date];
+            // or does it correspond to the elapsed week ?
+            NSDate* elapsedWeek = [beginningOfTheDay dateByAddingTimeInterval:-24*60*60*7];
+            if ([elapsedWeek compare:date]!=NSOrderedDescending) {
+                [self.weekdayDateFormatter setDateFormat:@"EEEE"];
+                self.weekdayLabel.text = [self.weekdayDateFormatter stringFromDate:date];
+            } else {
+                [self.weekdayDateFormatter setTimeStyle:NSDateFormatterNoStyle];
+                [self.weekdayDateFormatter setDateStyle:NSDateFormatterShortStyle];
+                self.weekdayLabel.text = [self.weekdayDateFormatter stringFromDate:date];
+            }
         }
         [self setWeekdayLabelHidden:NO animated:YES];
     } else {
